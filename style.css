@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-bg);
 }
 
 body {
@@ -45,7 +46,7 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: -100%;
+  top: -125%;
   left: -50%;
   width: 300%;
   height: 300%;
