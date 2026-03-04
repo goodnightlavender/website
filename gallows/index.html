@@ -26,7 +26,7 @@
 
     <main>
       <div class="gallows-logo-wrap fade-in fade-in-delay-1">
-        <span class="gallows-presents">goodnight lavender presents</span>
+        <span class="gallows-presents"><span class="gallows-presents-inner">goodnight lavender presents</span></span>
         <h1 class="gallows-title">Gallows</h1>
         <span class="gallows-kanji kanji cursor-repel" data-repel-strength="9">絞首台</span>
       </div>
@@ -156,7 +156,7 @@
 
   <script>
     (() => {
-      // === Presents: scale to 80% of GALLOWS glyph width ===
+      // === Presents: scale horizontally with GALLOWS ===
       function glyphWidth(el) {
         const r = document.createRange();
         r.selectNodeContents(el);
@@ -165,14 +165,13 @@
 
       function alignPresents() {
         const title = document.querySelector('.gallows-title');
-        const presents = document.querySelector('.gallows-presents');
-        if (!title || !presents) return;
-        presents.style.transform = 'scaleY(0.7)';
+        const inner = document.querySelector('.gallows-presents-inner');
+        if (!title || !inner) return;
+        inner.style.transform = '';
         const titleW = glyphWidth(title);
-        const presentsW = glyphWidth(presents);
-        if (presentsW === 0 || titleW === 0) return;
-        const ratio = (titleW * 0.8) / presentsW;
-        presents.style.transform = `scaleX(${ratio}) scaleY(0.7)`;
+        const innerW = glyphWidth(inner);
+        if (innerW === 0 || titleW === 0) return;
+        inner.style.transform = `scaleX(${(titleW * 0.8) / innerW})`;
       }
 
       alignPresents();

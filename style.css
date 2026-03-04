@@ -322,17 +322,21 @@ body::before {
 
 .gallows-presents {
   display: block;
+  transform: scaleY(0.7);
+  transform-origin: center bottom;
+  margin-bottom: -0.55em;
+  text-align: center;
+}
+
+.gallows-presents-inner {
+  display: inline-block;
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text);
-  transform: scaleY(0.7);
-  transform-origin: center bottom;
-  margin-bottom: -0.55em;
   white-space: nowrap;
-  text-align: center;
 }
 
 .gallows-title {
@@ -349,11 +353,11 @@ body::before {
 
 .gallows-kanji {
   position: absolute;
-  top: 47%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Yuji Mai', serif;
-  font-size: clamp(2.5rem, 10vw, 7rem);
+  font-size: clamp(2.375rem, 9.5vw, 6.65rem);
   font-weight: 400;
   color: var(--color-accent);
   white-space: nowrap;
@@ -504,7 +508,16 @@ body::before {
   }
 
   .gallows-presents {
+    transform: scaleY(0.55);
+  }
+
+  .gallows-presents-inner {
     letter-spacing: 0.15em;
+  }
+
+  .gallows-kanji {
+    font-size: clamp(2.75rem, 11vw, 7rem);
+    top: 54%;
   }
 
   .tracklist {
