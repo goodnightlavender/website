@@ -34,6 +34,7 @@ body {
   font-family: var(--font-primary);
   font-weight: 700;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -103,6 +104,7 @@ body::before {
 .fade-in-delay-2 { animation-delay: 0.3s; }
 .fade-in-delay-3 { animation-delay: 0.45s; }
 .fade-in-delay-4 { animation-delay: 0.6s; }
+.fade-in-delay-5 { animation-delay: 0.75s; }
 
 /* Cursor-repel elements */
 .cursor-repel {
@@ -171,6 +173,8 @@ body::before {
   gap: 3rem;
 }
 
+
+
 .link-text {
   text-decoration: none;
   text-transform: uppercase;
@@ -238,6 +242,7 @@ body::before {
 
 .live-page {
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   z-index: 1;
 }
@@ -466,6 +471,73 @@ body::before {
 }
 
 /* ==========================================================================
+   STORE PAGE — store/index.html
+   ========================================================================== */
+
+.store-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.store-card {
+  display: block;
+  border: 1px solid var(--color-accent-subtle);
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  color: var(--color-text);
+  transition:
+    border-color var(--transition-speed) var(--transition-ease),
+    opacity var(--transition-speed) var(--transition-ease);
+}
+
+.store-card:hover {
+  border-color: var(--color-accent-dim);
+  opacity: 0.8;
+}
+
+.store-card-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-accent-subtle);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.store-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.store-card-info {
+  padding: 1.25rem;
+  background: #111;
+}
+
+.store-card-title {
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transform: scaleY(0.7);
+  transform-origin: left top;
+  margin-bottom: 0.5rem;
+}
+
+.store-card-price {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 
@@ -479,10 +551,15 @@ body::before {
   }
 
   .links {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
+    row-gap: 1.5rem;
+    max-width: 280px;
   }
 
   .link-text {
+    font-size: 0.9rem;
     letter-spacing: 0.2em;
   }
 
@@ -532,6 +609,14 @@ body::before {
   .track-number {
     min-width: 1.5rem;
     font-size: 0.75rem;
+  }
+
+  .store-section {
+    padding: 0 1rem 2.5rem;
+  }
+
+  .store-grid {
+    gap: 1rem;
   }
 }
 

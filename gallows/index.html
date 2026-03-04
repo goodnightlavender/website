@@ -9,6 +9,8 @@
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-256.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="/favicon-256.png">
 
   <!-- Google Fonts: Roboto Black (900) + Bold (700) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,7 +183,8 @@
       ]).then(alignPresents);
       window.addEventListener('resize', alignPresents);
 
-      // === Cursor repel ===
+      // === Cursor repel (desktop only) ===
+      if (matchMedia('(pointer: coarse)').matches) return;
       const els = document.querySelectorAll('.cursor-repel');
       let mx = -9999, my = -9999;
 
