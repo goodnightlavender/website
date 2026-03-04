@@ -1,6 +1,5 @@
 /* ==========================================================================
    GOODNIGHT LAVENDER — Stylesheet
-   White on black | Dark red accents | 35mm grain
    ========================================================================== */
 
 /* --- Design Tokens --- */
@@ -20,6 +19,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 html {
