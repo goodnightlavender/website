@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GOODNIGHT LAVENDER: GALLOWS</title>
-  <meta name="description" content="GALLOWS, a pop-punk album by goodnight lavender.">
-  <meta name="theme-color" content="#111111">
+  <meta name="description" content="goodnight lavender's second album, a pop-punk fever dream.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="canonical" href="https://goodnightlavender.com/gallows">
+  <meta property="og:title" content="GOODNIGHT LAVENDER: GALLOWS">
+  <meta property="og:description" content="A pop-punk album by goodnight lavender.">
+  <meta property="og:url" content="https://goodnightlavender.com/gallows">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://goodnightlavender.com/gallows/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -21,7 +27,7 @@
 </head>
 <body>
 
-  <div class="live-page">
+  <div class="subpage">
     <header class="live-header gallows-header fade-in">
       <a href="/" class="back-link">&larr; Back</a>
     </header>
@@ -30,7 +36,7 @@
       <div class="gallows-logo-wrap fade-in fade-in-delay-1">
         <span class="gallows-presents"><span class="gallows-presents-inner">goodnight lavender presents</span></span>
         <h1 class="gallows-title">Gallows</h1>
-        <span class="gallows-kanji kanji cursor-repel" data-repel-strength="9">絞首台</span>
+        <span class="gallows-kanji kanji cursor-repel" data-repel-strength="9" lang="ja">絞首台</span>
       </div>
 
       <section class="tracklist fade-in fade-in-delay-2" aria-label="Gallows tracklist">
@@ -222,10 +228,15 @@
         requestAnimationFrame(update);
       }
 
-      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-      document.body.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
+      let raf, idle;
+      function startLoop() {
+        clearTimeout(idle);
+        if (!raf) raf = requestAnimationFrame(update);
+        idle = setTimeout(() => { cancelAnimationFrame(raf); raf = null; }, 1000);
+      }
 
-      requestAnimationFrame(update);
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; startLoop(); });
+      document.body.addEventListener('mouseleave', () => { mx = -9999; my = -9999; });
     })();
   </script>
 
