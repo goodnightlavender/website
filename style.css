@@ -164,13 +164,8 @@ body::before {
   display: inline-block;
   opacity: 0;
   animation: fadeInUp 0.9s var(--transition-ease) forwards;
-  padding: 1rem 0.5rem;
-}
-
-.logo-link {
-  position: absolute;
-  inset: 20%;
-  z-index: 3;
+  text-decoration: none;
+  color: inherit;
 }
 
 .band-name {
