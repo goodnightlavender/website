@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /dead-air/
+Disallow: /join/thanks
 
 Sitemap: https://goodnightlavender.com/sitemap.xml

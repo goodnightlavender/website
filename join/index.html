@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
+  <title>GOODNIGHT LAVENDER: JOIN</title>
+  <meta name="description" content="Join 7th Utopia. Be first to know about new music, shows, and merch from goodnight lavender.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="canonical" href="https://goodnightlavender.com/join">
+  <meta property="og:title" content="GOODNIGHT LAVENDER: JOIN">
+  <meta property="og:description" content="Join 7th Utopia. Be first to know about new music, shows, and merch.">
+  <meta property="og:url" content="https://goodnightlavender.com/join">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-256.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="/favicon-256.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Google Fonts: Roboto Black (900) + Bold (700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <main class="join-page">
+    <a href="/" class="join-back fade-in">&larr;</a>
+
+    <div class="join-hero fade-in fade-in-delay-1">
+      <h1 class="join-title">Join 7th Utopia</h1>
+    </div>
+
+    <div class="join-card fade-in fade-in-delay-2">
+      <div class="join-incentive">
+        <p class="join-incentive-label">Signing bonus</p>
+        <p class="join-incentive-text">
+          Get access to <strong>"DEAD AIR"</strong><br>an unreleased song from Gallows.
+        </p>
+      </div>
+
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/goodnightlavender"
+        method="post"
+        class="join-form"
+      >
+        <input type="hidden" value="1" name="embed">
+        <div class="join-field">
+          <label for="bd-email" class="sr-only">Email address</label>
+          <input
+            type="email"
+            name="email"
+            id="bd-email"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          >
+        </div>
+        <button type="submit" class="join-submit">Join</button>
+      </form>
+
+      <p class="join-fine-print">Unsubscribe anytime.</p>
+    </div>
+  </main>
+
+</body>
+</html>
