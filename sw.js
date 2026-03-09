@@ -1,4 +1,4 @@
-var CACHE = 'gl-v4';
+var CACHE = 'gl-v5';
 var PRECACHE = [
   '/',
   '/style.css',

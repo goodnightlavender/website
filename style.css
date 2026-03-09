@@ -1247,6 +1247,408 @@ body::before {
 }
 
 /* ==========================================================================
+   EPK (Electronic Press Kit)
+   ========================================================================== */
+
+/* Language toggle system */
+html[data-lang="en"] [lang="nl"],
+html[data-lang="nl"] [lang="en"] {
+  display: none;
+}
+
+/* Language dialog */
+.epk-lang-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+}
+
+.epk-lang-dialog[hidden] {
+  display: none;
+}
+
+.epk-lang-dialog-box {
+  text-align: center;
+  padding: 2rem;
+}
+
+.epk-lang-dialog-title {
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  transform: scaleY(0.7);
+  margin: 0 0 1rem;
+}
+
+.epk-lang-dialog-subtitle {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 2.5rem;
+}
+
+.epk-lang-dialog-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.epk-lang-btn {
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 0.85rem 2.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.epk-lang-btn:hover {
+  opacity: 0.85;
+}
+
+/* EPK header */
+.epk-header {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.epk-lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.epk-lang-toggle {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.epk-lang-toggle:hover {
+  color: var(--color-text);
+}
+
+.epk-lang-toggle.active {
+  color: var(--color-accent);
+}
+
+.epk-lang-sep {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* EPK hero + contact */
+.epk-hero {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 2rem 2.5rem;
+  text-align: center;
+}
+
+.epk-title {
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  transform: scaleY(0.7);
+  margin: 0 0 1.25rem;
+}
+
+.epk-contact-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.epk-contact-link:hover {
+  opacity: 0.7;
+}
+
+/* EPK sections */
+.epk-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+.epk-section-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  margin: 0 0 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.epk-section-last {
+  padding-bottom: 5rem;
+}
+
+/* EPK biography */
+.epk-bio-block {
+  margin-bottom: 2rem;
+}
+
+.epk-bio-block:last-child {
+  margin-bottom: 0;
+}
+
+.epk-bio-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.epk-bio-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.epk-copy-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.7rem;
+  font-family: var(--font-primary);
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color var(--transition-speed) var(--transition-ease),
+              border-color var(--transition-speed) var(--transition-ease);
+}
+
+.epk-copy-btn:hover {
+  color: var(--color-text);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.epk-copy-btn .epk-copy-done {
+  display: none;
+}
+
+.epk-copy-btn.copied .epk-copy-label {
+  display: none;
+}
+
+.epk-copy-btn.copied .epk-copy-done {
+  display: inline;
+  color: var(--color-accent);
+}
+
+.epk-bio-short {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin: 0;
+}
+
+.epk-bio-long {
+  text-transform: none;
+}
+
+.epk-bio-long p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  margin: 0 0 0.75rem;
+}
+
+.epk-bio-long p:last-child {
+  margin-bottom: 0;
+}
+
+.epk-bio-short em,
+.epk-bio-long em {
+  font-style: italic;
+}
+
+/* EPK photo grid */
+.epk-photo-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.epk-photo-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.epk-photo-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.epk-photo-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.epk-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-card-bg);
+}
+
+.epk-photo-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.epk-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.epk-download-btn {
+  display: block;
+  text-align: center;
+  padding: 0.6rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-primary);
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: background var(--transition-speed) var(--transition-ease),
+              color var(--transition-speed) var(--transition-ease);
+}
+
+.epk-download-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.epk-photo-credit {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.epk-photo-credit a {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.epk-photo-credit a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* EPK links */
+.epk-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.epk-link-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-card-bg);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: border-color var(--transition-speed) var(--transition-ease),
+              background var(--transition-speed) var(--transition-ease);
+}
+
+.epk-link-block:hover {
+  border-color: var(--color-accent-subtle);
+  background: var(--color-card-bg-hover);
+}
+
+.epk-link-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+.epk-link-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* EPK rider downloads */
+.epk-rider-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.epk-download-btn-large {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  font-size: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+}
+
+.epk-file-type {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.2rem 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 
@@ -1356,6 +1758,23 @@ body::before {
 
   .product-page .add-to-cart-btn {
     max-width: 100%;
+  }
+
+  /* EPK mobile */
+  .epk-photo-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .epk-section {
+    padding: 0 1.5rem 2.5rem;
+  }
+
+  .epk-hero {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .epk-header {
+    padding: 1.5rem 1.5rem 0.5rem;
   }
 }
 
