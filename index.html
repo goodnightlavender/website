@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
   <title>GOODNIGHT LAVENDER</title>
   <meta name="description" content="An alt-rock band from Amsterdam. Listen to music, find upcoming shows, and shop for official merch.">
   <meta name="theme-color" content="#0a0a0a">
@@ -27,11 +28,15 @@
 </head>
 <body>
 
-  <main class="landing">
-    <div class="logo-wrap">
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <p class="preloader-text">goodnight lavender</p>
+  </div>
+
+  <main class="landing preloader-hidden">
+    <a href="/about" class="logo-wrap">
       <h1 class="band-name">goodnight<br>lavender</h1>
       <span class="kanji cursor-repel" data-repel-strength="9" lang="ja">おやすみ</span>
-    </div>
+    </a>
 
     <nav class="links" aria-label="Main links">
       <a href="https://open.spotify.com/artist/3g5LMC9LcEsKTZQmFtBbQD"
@@ -73,6 +78,35 @@
       </a>
     </nav>
   </main>
+
+  <script>
+    (function () {
+      var preloader = document.getElementById('preloader');
+      var landing = document.querySelector('.landing');
+      if (!preloader) return;
+
+      var minTime = new Promise(function (r) { setTimeout(r, 800); });
+      var fontsReady = document.fonts.ready;
+
+      Promise.all([minTime, fontsReady]).then(function () {
+        preloader.classList.add('preloader-done');
+        landing.classList.add('preloader-ready');
+        preloader.addEventListener('transitionend', function () {
+          preloader.remove();
+        }, { once: true });
+        setTimeout(function () { if (preloader.parentNode) preloader.remove(); }, 1000);
+      });
+
+      // Hard fallback
+      setTimeout(function () {
+        if (preloader.parentNode) {
+          preloader.classList.add('preloader-done');
+          landing.classList.add('preloader-ready');
+          setTimeout(function () { if (preloader.parentNode) preloader.remove(); }, 500);
+        }
+      }, 1500);
+    })();
+  </script>
 
   <script>
     (() => {
@@ -142,6 +176,12 @@
         my = -9999;
       });
     })();
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    }
   </script>
 
 </body>

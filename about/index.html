@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
+  <title>GOODNIGHT LAVENDER: ABOUT</title>
+  <meta name="description" content="goodnight lavender is beauty breaking under pressure, cinematic tension fused with punk urgency.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="canonical" href="https://goodnightlavender.com/about">
+  <meta property="og:title" content="GOODNIGHT LAVENDER: ABOUT">
+  <meta property="og:description" content="goodnight lavender is beauty breaking under pressure, cinematic tension fused with punk urgency.">
+  <meta property="og:url" content="https://goodnightlavender.com/about">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://goodnightlavender.com/about/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-256.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="/favicon-256.png">
+
+  <!-- Google Fonts: Roboto Black (900) + Bold (700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <div class="subpage">
+    <header class="live-header gallows-header fade-in">
+      <a href="/" class="back-link">&larr; Back</a>
+    </header>
+
+    <main>
+      <div class="about-content fade-in fade-in-delay-1">
+        <p class="about-bio">goodnight lavender is beauty breaking under pressure.</p>
+        <p class="about-bio">Born from the vision of multi-instrumentalist Kai van Deursen, goodnight lavender draws from emo, alt-rock, and punk to create something raw, restless, and unmistakably personal. With influences ranging from My Chemical Romance and Nine Inch Nails to The Pixies, the project walks a razor's edge between aggression and vulnerability.</p>
+        <p class="about-bio">Every album tells a story. "A Heart Lies Still" is a romance in decay, two lives unraveling beneath the grip of an unstoppable force. "Gallows" burns hotter and faster, a pop-punk fever dream about a rebel group called 7th UTOPIA fighting to outrun a fate already written.</p>
+        <p class="about-bio">The mission hasn't changed:<br>make music that understands you as much as you understand it.</p>
+      </div>
+
+      <div class="gallery fade-in fade-in-delay-2">
+        <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="gallery-viewport">
+          <div class="gallery-track">
+
+            <div class="gallery-slide">
+              <img src="/about/images/1.jpg" alt="goodnight lavender" loading="lazy">
+            </div>
+
+            <div class="gallery-slide">
+              <img src="/about/images/2.jpg" alt="goodnight lavender" loading="lazy">
+              <a class="gallery-credit" href="https://www.instagram.com/flix_photograph/" target="_blank" rel="noopener noreferrer">@flix_photograph</a>
+            </div>
+
+            <div class="gallery-slide">
+              <img src="/about/images/3.jpg" alt="goodnight lavender" loading="lazy">
+              <a class="gallery-credit" href="https://www.instagram.com/shots_by_dante/" target="_blank" rel="noopener noreferrer">@shots_by_dante</a>
+            </div>
+
+            <div class="gallery-slide">
+              <img src="/about/images/4.jpg" alt="goodnight lavender" loading="lazy">
+              <a class="gallery-credit" href="https://www.instagram.com/shots_by_dante/" target="_blank" rel="noopener noreferrer">@shots_by_dante</a>
+            </div>
+
+            <div class="gallery-slide">
+              <img src="/about/images/5.jpg" alt="goodnight lavender" loading="lazy">
+              <a class="gallery-credit" href="https://www.instagram.com/shots_by_dante/" target="_blank" rel="noopener noreferrer">@shots_by_dante</a>
+            </div>
+
+            <div class="gallery-slide">
+              <img src="/about/images/6.jpg" alt="goodnight lavender" loading="lazy">
+              <a class="gallery-credit" href="https://www.instagram.com/shots_by_dante/" target="_blank" rel="noopener noreferrer">@shots_by_dante</a>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var track = document.querySelector('.gallery-track');
+      var slides = document.querySelectorAll('.gallery-slide');
+      var prevBtn = document.querySelector('.gallery-prev');
+      var nextBtn = document.querySelector('.gallery-next');
+      var total = slides.length;
+      var current = 0;
+
+      function goTo(i) {
+        current = Math.max(0, Math.min(i, total - 1));
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+      }
+
+      prevBtn.addEventListener('click', function () { goTo(current - 1); });
+      nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+      // Touch / drag support
+      var startX = 0;
+      var startY = 0;
+      var deltaX = 0;
+      var dragging = false;
+      var locked = false;
+
+      function onStart(e) {
+        var pt = e.touches ? e.touches[0] : e;
+        startX = pt.clientX;
+        startY = pt.clientY;
+        deltaX = 0;
+        dragging = true;
+        locked = false;
+        track.classList.add('dragging');
+      }
+
+      function onMove(e) {
+        if (!dragging) return;
+        var pt = e.touches ? e.touches[0] : e;
+        deltaX = pt.clientX - startX;
+        var deltaY = pt.clientY - startY;
+
+        // Lock direction after initial movement
+        if (!locked && (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5)) {
+          locked = true;
+          if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            // Vertical scroll — abort drag
+            dragging = false;
+            track.classList.remove('dragging');
+            return;
+          }
+        }
+
+        if (locked) {
+          e.preventDefault();
+          var offset = -(current * 100) + (deltaX / track.offsetWidth) * 100;
+          track.style.transform = 'translateX(' + offset + '%)';
+        }
+      }
+
+      function onEnd() {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('dragging');
+        if (deltaX < -50) goTo(current + 1);
+        else if (deltaX > 50) goTo(current - 1);
+        else goTo(current);
+      }
+
+      track.addEventListener('touchstart', onStart, { passive: true });
+      track.addEventListener('touchmove', onMove, { passive: false });
+      track.addEventListener('touchend', onEnd);
+      track.addEventListener('mousedown', onStart);
+      track.addEventListener('mousemove', onMove);
+      track.addEventListener('mouseup', onEnd);
+      track.addEventListener('mouseleave', onEnd);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (matchMedia('(pointer: coarse)').matches) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var gallery = document.querySelector('.gallery');
+      var imgs = document.querySelectorAll('.gallery-slide img');
+      if (!gallery || !imgs.length) return;
+
+      var active = false;
+      var ticking = false;
+
+      var observer = new IntersectionObserver(function (entries) {
+        active = entries[0].isIntersecting;
+        if (active) {
+          imgs.forEach(function (img) { img.classList.add('parallax-active'); });
+          onScroll();
+        } else {
+          imgs.forEach(function (img) {
+            img.classList.remove('parallax-active');
+            img.style.transform = '';
+          });
+        }
+      }, { threshold: 0 });
+
+      observer.observe(gallery);
+
+      function onScroll() {
+        if (!active || ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          if (!active) return;
+          var rect = gallery.getBoundingClientRect();
+          var viewH = window.innerHeight;
+          var center = rect.top + rect.height / 2;
+          var ratio = (center - viewH / 2) / (viewH / 2 + rect.height / 2);
+          ratio = Math.max(-1, Math.min(1, ratio));
+          var shift = ratio * -15;
+          imgs.forEach(function (img) {
+            img.style.transform = 'translateY(' + shift + 'px)';
+          });
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
