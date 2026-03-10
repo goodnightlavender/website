@@ -379,7 +379,7 @@ body::before {
 .widget-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 1rem 2rem 4rem;
+  padding: 1rem 2rem 1rem;
 }
 
 /* ==========================================================================
@@ -2346,7 +2346,7 @@ html[data-lang="nl"] [lang="en"] {
 
 .page-cta {
   text-align: center;
-  padding: 3rem 2rem 4rem;
+  padding: 1rem 2rem 4rem;
   max-width: 400px;
   margin: 0 auto;
 }
