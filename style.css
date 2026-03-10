@@ -1467,7 +1467,9 @@ html[data-lang="nl"] [lang="en"] {
 }
 
 .epk-bio-short,
-.epk-bio-long {
+.epk-bio-short *,
+.epk-bio-long,
+.epk-bio-long * {
   user-select: text;
   -webkit-user-select: text;
 }
