@@ -150,6 +150,14 @@
     </main>
   </div>
 
+  <script>
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var header = document.querySelector('.live-header');
+      if (!header) return;
+      setTimeout(function () { header.classList.add('header-faded'); }, 3000);
+    })();
+  </script>
 
 </body>
 </html>
