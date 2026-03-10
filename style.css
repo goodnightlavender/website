@@ -1874,7 +1874,8 @@ html[data-lang="nl"] [lang="en"] {
    ========================================================================== */
 
 .join-page {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1882,6 +1883,7 @@ html[data-lang="nl"] [lang="en"] {
   padding: 2rem;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .join-card-spaced {
