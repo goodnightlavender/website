@@ -37,6 +37,7 @@
   <!-- Page content (hidden until language chosen) -->
   <div class="subpage epk-page" id="epk-page" hidden>
     <header class="epk-header fade-in">
+      <a href="/" class="band-name-small">goodnight lavender</a>
       <div class="epk-lang-switch">
         <button class="epk-lang-toggle" type="button" data-switch-lang="en">EN</button>
         <span class="epk-lang-sep">/</span>
@@ -322,6 +323,53 @@
           btn.classList.add('copied');
           setTimeout(function () { btn.classList.remove('copied'); }, 1500);
         });
+      });
+
+      // Image lightbox
+      var lightbox = document.createElement('div');
+      lightbox.className = 'epk-lightbox';
+      lightbox.innerHTML = '<button class="epk-lightbox-close" type="button" aria-label="Close">&times;</button><img src="" alt="">';
+      document.body.appendChild(lightbox);
+
+      var lbImg = lightbox.querySelector('img');
+      var lbClose = lightbox.querySelector('.epk-lightbox-close');
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        lightbox.style.display = 'flex';
+        requestAnimationFrame(function () {
+          lightbox.classList.add('epk-lightbox-visible');
+        });
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('epk-lightbox-visible');
+        lightbox.addEventListener('transitionend', function () {
+          lightbox.style.display = 'none';
+          lbImg.src = '';
+        }, { once: true });
+        setTimeout(function () { lightbox.style.display = 'none'; }, 400);
+      }
+
+      lightbox.style.display = 'none';
+
+      document.addEventListener('click', function (e) {
+        var img = e.target.closest('.epk-photo-wrap img');
+        if (!img) return;
+        var card = img.closest('.epk-photo-card');
+        if (!card) return;
+        var downloadLink = card.querySelector('.epk-download-btn');
+        if (!downloadLink) return;
+        openLightbox(downloadLink.href, img.alt);
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.style.display !== 'none') closeLightbox();
       });
     })();
   </script>

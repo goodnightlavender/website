@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /dead-air/
-Disallow: /join/thanks
+Disallow: /secrets/
+Disallow: /join/thanks/
 Disallow: /epk/
 
 Sitemap: https://goodnightlavender.com/sitemap.xml

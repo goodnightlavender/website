@@ -1,4 +1,4 @@
-var CACHE = 'gl-v5';
+var CACHE = 'gl-v7';
 var PRECACHE = [
   '/',
   '/style.css',
@@ -34,6 +34,9 @@ self.addEventListener('fetch', function (e) {
   // Only handle same-origin GET requests
   if (e.request.method !== 'GET') return;
   if (url.origin !== self.location.origin) return;
+
+  // Skip audio/video — range requests need native handling
+  if (url.pathname.match(/\.(mp3|mp4|wav|ogg|flac|webm)$/)) return;
 
   // HTML: network-first
   if (e.request.headers.get('Accept').indexOf('text/html') !== -1) {

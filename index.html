@@ -33,12 +33,10 @@
     <p class="preloader-text">goodnight lavender</p>
   </div>
 
-  <div class="popup-overlay" id="popup" hidden>
-    <div class="popup">
-      <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
-      <p class="popup-text" id="popup-text"></p>
-      <a class="popup-cta" id="popup-cta" target="_blank" rel="noopener noreferrer"></a>
-    </div>
+  <div class="announce-bar" id="announce" hidden>
+    <span class="announce-text" id="announce-text"></span>
+    <a class="announce-cta" id="announce-cta" target="_blank" rel="noopener noreferrer"></a>
+    <button class="announce-close" id="announce-close" aria-label="Dismiss">&times;</button>
   </div>
 
   <main class="landing preloader-hidden">
@@ -96,6 +94,16 @@
       var preloader = document.getElementById('preloader');
       var landing = document.querySelector('.landing');
       if (!preloader) return;
+
+      // Skip preloader if fonts are already cached
+      var fontsLoaded = document.fonts.check('900 1em Roboto') && document.fonts.check('700 1em Roboto');
+      if (fontsLoaded) {
+        preloader.classList.add('preloader-done');
+        landing.classList.remove('preloader-hidden');
+        landing.classList.add('preloader-ready');
+        preloader.remove();
+        return;
+      }
 
       var minTime = new Promise(function (r) { setTimeout(r, 800); });
       var fontsReady = document.fonts.ready;
@@ -198,49 +206,50 @@
 
   <script>
     (function () {
-      /* ── Popup config — edit these to change content, or set ENABLED to false ── */
-      var POPUP_ENABLED = true;
-      var POPUP_TEXT    = "We\u2019re playing at P60 in Amstelveen on March 19th!";
-      var POPUP_BTN     = "BUY TICKETS NOW";
-      var POPUP_LINK    = "https://p60.nl/2026/goodnight-lavender/";
-      var POPUP_KEY     = "gl_popup_p60";
+      /* ── Announcement config — edit these to change content, or set ENABLED to false ── */
+      var ANNOUNCE_ENABLED = true;
+      var ANNOUNCE_TEXT    = "We\u2019re playing at P60 in Amstelveen on March 19th!";
+      var ANNOUNCE_BTN    = "GET TICKETS";
+      var ANNOUNCE_LINK   = "https://p60.nl/2026/goodnight-lavender/";
+      var ANNOUNCE_KEY    = "gl_announce_p60";
       /* ──────────────────────────────────────────────────────────────────────────── */
 
-      if (!POPUP_ENABLED) return;
-      if (localStorage.getItem(POPUP_KEY)) return;
+      if (!ANNOUNCE_ENABLED) return;
+      if (localStorage.getItem(ANNOUNCE_KEY)) return;
 
-      var overlay = document.getElementById('popup');
-      var textEl  = document.getElementById('popup-text');
-      var ctaEl   = document.getElementById('popup-cta');
-      var closeEl = document.getElementById('popup-close');
-      if (!overlay) return;
+      var bar     = document.getElementById('announce');
+      var textEl  = document.getElementById('announce-text');
+      var ctaEl   = document.getElementById('announce-cta');
+      var closeEl = document.getElementById('announce-close');
+      if (!bar) return;
 
-      textEl.textContent = POPUP_TEXT;
-      ctaEl.textContent  = POPUP_BTN;
-      ctaEl.href         = POPUP_LINK;
+      textEl.textContent = ANNOUNCE_TEXT;
+      ctaEl.textContent  = ANNOUNCE_BTN;
+      ctaEl.href         = ANNOUNCE_LINK;
+
+      var landing = document.querySelector('.landing');
 
       function show() {
-        overlay.removeAttribute('hidden');
+        bar.removeAttribute('hidden');
         requestAnimationFrame(function () {
-          overlay.classList.add('popup-visible');
+          bar.classList.add('announce-visible');
+          if (landing) landing.classList.add('announce-active');
         });
       }
 
       function dismiss() {
-        localStorage.setItem(POPUP_KEY, '1');
-        overlay.classList.remove('popup-visible');
-        overlay.addEventListener('transitionend', function () {
-          overlay.setAttribute('hidden', '');
+        localStorage.setItem(ANNOUNCE_KEY, '1');
+        bar.classList.remove('announce-visible');
+        if (landing) landing.classList.remove('announce-active');
+        bar.addEventListener('transitionend', function () {
+          bar.setAttribute('hidden', '');
         }, { once: true });
-        setTimeout(function () { overlay.setAttribute('hidden', ''); }, 500);
+        setTimeout(function () { bar.setAttribute('hidden', ''); }, 500);
       }
 
       closeEl.addEventListener('click', dismiss);
       ctaEl.addEventListener('click', function () {
-        localStorage.setItem(POPUP_KEY, '1');
-      });
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) dismiss();
+        localStorage.setItem(ANNOUNCE_KEY, '1');
       });
 
       setTimeout(show, 1800);

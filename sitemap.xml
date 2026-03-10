@@ -28,4 +28,8 @@
     <loc>https://goodnightlavender.com/join</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://goodnightlavender.com/images</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
