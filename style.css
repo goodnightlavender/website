@@ -304,7 +304,17 @@ body::before {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 2rem 1.5rem;
-  border-bottom: 1px solid var(--color-border-light);
+  transition: opacity 0.6s var(--transition-ease);
+}
+
+.live-header.header-faded {
+  animation: none;
+  opacity: 0.15;
+}
+
+.live-header.header-faded:hover,
+.live-header.header-faded:focus-within {
+  opacity: 1;
 }
 
 .band-name-small {
@@ -2461,6 +2471,10 @@ html[data-lang="nl"] [lang="en"] {
   }
 
   .fade-in {
+    opacity: 1;
+  }
+
+  .live-header.header-faded {
     opacity: 1;
   }
 
