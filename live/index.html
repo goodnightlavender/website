@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="view-transition" content="same-origin">
-  <title>GOODNIGHT LAVENDER: LIVE</title>
+  <title>GOODNIGHT LAVENDER: TOUR</title>
   <meta name="description" content="Upcoming shows and tour dates. See the band live in Europe, and beyond.">
   <meta name="theme-color" content="#0a0a0a">
   <link rel="canonical" href="https://goodnightlavender.com/live">
-  <meta property="og:title" content="GOODNIGHT LAVENDER: LIVE">
+  <meta property="og:title" content="GOODNIGHT LAVENDER: TOUR">
   <meta property="og:description" content="Upcoming shows and tour dates.">
   <meta property="og:url" content="https://goodnightlavender.com/live">
   <meta property="og:type" content="website">
@@ -30,13 +30,12 @@
 <body>
 
   <div class="subpage">
-    <header class="live-header fade-in">
-      <a href="/" class="band-name-small">goodnight lavender</a>
-      <a href="/" class="back-link">&larr;</a>
-    </header>
+    <a href="/" class="header-back fade-in">&larr;</a>
 
     <main>
-      <h1 class="live-title fade-in fade-in-delay-1">Shows</h1>
+      <div class="tour-hero fade-in fade-in-delay-1">
+        <h1 class="tour-title">Tour</h1>
+      </div>
 
       <section class="widget-container fade-in fade-in-delay-2">
         <!-- BandsInTown Widget -->
@@ -150,14 +149,6 @@
     </main>
   </div>
 
-  <script>
-    (function () {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var header = document.querySelector('.live-header');
-      if (!header) return;
-      setTimeout(function () { header.classList.add('header-faded'); }, 3000);
-    })();
-  </script>
 
 </body>
 </html>

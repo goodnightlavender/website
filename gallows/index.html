@@ -30,10 +30,7 @@
 <body>
 
   <div class="subpage">
-    <header class="live-header fade-in">
-      <a href="/" class="band-name-small">goodnight lavender</a>
-      <a href="/" class="back-link">&larr;</a>
-    </header>
+    <a href="/" class="header-back fade-in">&larr;</a>
 
     <main>
       <div class="gallows-logo-wrap fade-in fade-in-delay-1">
@@ -250,14 +247,6 @@
     })();
   </script>
 
-  <script>
-    (function () {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var header = document.querySelector('.live-header');
-      if (!header) return;
-      setTimeout(function () { header.classList.add('header-faded'); }, 3000);
-    })();
-  </script>
 
 </body>
 </html>
