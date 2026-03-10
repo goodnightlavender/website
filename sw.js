@@ -19,9 +19,20 @@ self.addEventListener('install', function (e) {
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
+      var stale = keys.filter(function (k) { return k !== CACHE; });
+      if (stale.length && self.cookieStore) {
+        stale.push(
+          self.cookieStore.getAll().then(function (cookies) {
+            return Promise.all(cookies.map(function (c) {
+              return self.cookieStore.delete(c.name);
+            }));
+          })
+        );
+      }
       return Promise.all(
-        keys.filter(function (k) { return k !== CACHE; })
-            .map(function (k) { return caches.delete(k); })
+        stale.map(function (k) {
+          return typeof k === 'string' ? caches.delete(k) : k;
+        })
       );
     })
   );
