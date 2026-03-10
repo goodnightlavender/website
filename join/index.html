@@ -67,5 +67,26 @@
     </div>
   </main>
 
+  <div class="join-confirm-overlay" id="confirm-overlay" hidden>
+    <div class="join-confirm-box">
+      <p class="join-confirm-title">Check Your Inbox</p>
+      <p class="join-confirm-text">Click the confirmation link in your email to finish signing up.</p>
+      <button class="join-confirm-close" id="confirm-close" type="button">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      if (new URLSearchParams(location.search).has('confirm')) {
+        var overlay = document.getElementById('confirm-overlay');
+        overlay.removeAttribute('hidden');
+        document.getElementById('confirm-close').addEventListener('click', function () {
+          overlay.setAttribute('hidden', '');
+          history.replaceState(null, '', '/join/');
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
