@@ -103,6 +103,10 @@ body::before {
   navigation: auto;
 }
 
+::view-transition-group(root) {
+  background: var(--color-bg);
+}
+
 ::view-transition-old(root) {
   animation: vt-fade-out 0.3s var(--transition-ease) forwards;
 }
