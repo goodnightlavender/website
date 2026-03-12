@@ -33,10 +33,11 @@
     var links = document.querySelectorAll('.link-text');
     if (links.length) {
       master.fromTo(links,
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 20, scaleY: 0.7 },
         {
           opacity: 1,
           y: 0,
+          scaleY: 0.7,
           duration: 0.3,
           ease: PUNK.slam,
           stagger: 0.06

@@ -212,7 +212,7 @@
             ease: PUNK.slam,
             scrollTrigger: {
               trigger: cta,
-              start: 'top 90%',
+              start: 'top 95%',
               toggleActions: 'play none none none'
             }
           }

@@ -4,14 +4,17 @@
 (function () {
   'use strict';
 
-  // Reduced-motion guard
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // Reduced-motion and mobile guard
+  var isMobile = matchMedia('(pointer: coarse)').matches;
+  var isReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (isReducedMotion || isMobile) {
     document.querySelectorAll('.fade-in').forEach(function (el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
       el.style.animation = 'none';
     });
-    window.GL_ANIM = { disabled: true };
+    window.GL_ANIM = { disabled: true, isMobile: isMobile };
     return;
   }
 
@@ -31,9 +34,6 @@
     glitchSteps: SteppedEase.config(5),
     none:       'none'
   };
-
-  // --- Mobile detection ---
-  var isMobile = matchMedia('(pointer: coarse)').matches;
 
   // --- glitchIn: signature animation ---
   // Rapid x/skewX jitter frames with blur flashes, then slam to rest
@@ -102,20 +102,27 @@
     var strength = opts.strength || 5;
 
     function fire() {
+      // Check if disabled dynamically e.g. from resize
+      if (window.GL_ANIM && window.GL_ANIM.disabled) return;
+
       var wait = gsap.utils.random(minDelay, maxDelay);
       gsap.delayedCall(wait, function () {
         gsap.to(target, {
           x: gsap.utils.random(-strength, strength),
           skewX: gsap.utils.random(-3, 3),
-          duration: 0.05,
-          yoyo: true,
-          repeat: 1,
-          ease: 'none',
+          duration: 0.05, // keep very short
+          yoyo: true,   // snap back
+          repeat: 1,    // exactly one back-and-forth
+          ease: 'none', // no easing for binary glitch
           onComplete: fire
         });
       });
     }
-    fire();
+
+    // Start only if not disabled
+    if (window.GL_ANIM && !window.GL_ANIM.disabled) {
+      fire();
+    }
   }
 
   // --- animateBack: back arrow entrance ---
