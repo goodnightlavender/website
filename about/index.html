@@ -30,10 +30,7 @@
 <body>
 
   <div class="subpage">
-    <header class="live-header fade-in">
-      <a href="/" class="band-name-small">goodnight lavender</a>
-      <a href="/" class="back-link">&larr;</a>
-    </header>
+    <a href="/" class="header-back fade-in">&larr;</a>
 
     <main>
       <div class="about-content fade-in fade-in-delay-1">
@@ -90,6 +87,11 @@
 
     </main>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="/animations.js" defer></script>
+  <script src="/animations-subpage.js" defer></script>
 
   <script>
     (function () {
@@ -218,6 +220,7 @@
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
   </script>
+
 
 </body>
 </html>

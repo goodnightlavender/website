@@ -141,6 +141,11 @@ body::before {
 .fade-in-delay-5 { animation-delay: 0.75s; }
 .fade-in-delay-6 { animation-delay: 0.9s; }
 
+/* When GSAP is active, disable CSS animations — GSAP handles reveals */
+[data-gsap] .fade-in {
+  animation: none !important;
+}
+
 /* Cursor-repel elements */
 .cursor-repel {
   will-change: transform;
