@@ -33,13 +33,15 @@
     var links = document.querySelectorAll('.link-text');
     if (links.length) {
       master.fromTo(links,
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 20, scaleY: 1 },
         {
           opacity: 1,
           y: 0,
+          scaleY: 1,
           duration: 0.3,
           ease: PUNK.slam,
-          stagger: 0.06
+          stagger: 0.06,
+          clearProps: "transform"
         },
         '-=0.15'
       );
