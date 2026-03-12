@@ -203,26 +203,10 @@
     // Page CTA
     var cta = document.querySelector('.page-cta');
     if (cta) {
-      if (typeof ScrollTrigger !== 'undefined') {
-        gsap.fromTo(cta,
-          { opacity: 0, y: 15 },
-          {
-            opacity: 1, y: 0,
-            duration: 0.4,
-            ease: PUNK.slam,
-            scrollTrigger: {
-              trigger: cta,
-              start: 'top 95%',
-              toggleActions: 'play none none none'
-            }
-          }
-        );
-      } else {
-        gsap.fromTo(cta,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.4, ease: PUNK.slam, delay: 0.7 }
-        );
-      }
+      gsap.fromTo(cta,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: PUNK.slam, delay: 2.5 }
+      );
     }
   }
 

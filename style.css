@@ -19,7 +19,9 @@
 }
 
 /* --- Reset --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -67,16 +69,47 @@ body::before {
    ========================================================================== */
 
 @keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
 }
 
 @keyframes fadeInUp {
@@ -84,6 +117,7 @@ body::before {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -91,8 +125,13 @@ body::before {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* ==========================================================================
@@ -116,13 +155,27 @@ body::before {
 }
 
 @keyframes vt-fade-out {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-8px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes vt-fade-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -134,12 +187,29 @@ body::before {
   animation: fadeInUp 0.9s var(--transition-ease) forwards;
 }
 
-.fade-in-delay-1 { animation-delay: 0.15s; }
-.fade-in-delay-2 { animation-delay: 0.3s; }
-.fade-in-delay-3 { animation-delay: 0.45s; }
-.fade-in-delay-4 { animation-delay: 0.6s; }
-.fade-in-delay-5 { animation-delay: 0.75s; }
-.fade-in-delay-6 { animation-delay: 0.9s; }
+.fade-in-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.fade-in-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.fade-in-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.fade-in-delay-4 {
+  animation-delay: 0.6s;
+}
+
+.fade-in-delay-5 {
+  animation-delay: 0.75s;
+}
+
+.fade-in-delay-6 {
+  animation-delay: 0.9s;
+}
 
 /* When GSAP is active, disable CSS animations — GSAP handles reveals */
 [data-gsap] .fade-in {
@@ -615,7 +685,10 @@ body::before {
   transition: opacity var(--transition-speed) var(--transition-ease);
 }
 
-.cart-toggle:hover { opacity: 0.6; }
+.cart-toggle:hover {
+  opacity: 0.6;
+}
+
 .cart-toggle:focus-visible {
   outline: 1px solid var(--color-accent);
   outline-offset: 4px;
@@ -732,7 +805,10 @@ body::before {
     background var(--transition-speed) var(--transition-ease);
 }
 
-.size-btn:hover { border-color: var(--color-accent-dim); }
+.size-btn:hover {
+  border-color: var(--color-accent-dim);
+}
+
 .size-btn.selected {
   background: var(--color-accent);
   border-color: var(--color-accent);
@@ -782,7 +858,9 @@ body::before {
   transition: opacity var(--transition-speed) var(--transition-ease);
 }
 
-.cart-overlay.open { opacity: 1; }
+.cart-overlay.open {
+  opacity: 1;
+}
 
 .cart-drawer {
   position: fixed;
@@ -799,7 +877,9 @@ body::before {
   transition: transform var(--transition-speed) var(--transition-ease);
 }
 
-.cart-drawer.open { transform: translateX(0); }
+.cart-drawer.open {
+  transform: translateX(0);
+}
 
 .cart-drawer-header {
   display: flex;
@@ -828,7 +908,9 @@ body::before {
   transition: opacity var(--transition-speed) var(--transition-ease);
 }
 
-.cart-drawer-close:hover { opacity: 0.6; }
+.cart-drawer-close:hover {
+  opacity: 0.6;
+}
 
 .cart-drawer-body {
   flex: 1;
@@ -862,7 +944,10 @@ body::before {
   border: 1px solid var(--color-accent-subtle);
 }
 
-.cart-item-details { flex: 1; min-width: 0; }
+.cart-item-details {
+  flex: 1;
+  min-width: 0;
+}
 
 .cart-item-name {
   font-size: 0.75rem;
@@ -909,7 +994,9 @@ body::before {
   transition: border-color var(--transition-speed) var(--transition-ease);
 }
 
-.cart-qty-btn:hover { border-color: var(--color-accent-dim); }
+.cart-qty-btn:hover {
+  border-color: var(--color-accent-dim);
+}
 
 .cart-item-qty {
   font-size: 0.7rem;
@@ -929,7 +1016,9 @@ body::before {
   transition: color var(--transition-speed) var(--transition-ease);
 }
 
-.cart-item-remove:hover { color: var(--color-accent); }
+.cart-item-remove:hover {
+  color: var(--color-accent);
+}
 
 .cart-drawer-footer {
   padding: 1.5rem;
@@ -957,7 +1046,9 @@ body::before {
   margin-bottom: 1rem;
 }
 
-.cart-total-amount { color: var(--color-accent); }
+.cart-total-amount {
+  color: var(--color-accent);
+}
 
 .cart-checkout-btn {
   display: block;
@@ -975,8 +1066,14 @@ body::before {
   transition: opacity var(--transition-speed) var(--transition-ease);
 }
 
-.cart-checkout-btn:hover { opacity: 0.85; }
-.cart-checkout-btn:disabled { opacity: 0.3; cursor: default; }
+.cart-checkout-btn:hover {
+  opacity: 0.85;
+}
+
+.cart-checkout-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
 
 /* --- Toast notification --- */
 .toast {
@@ -996,7 +1093,9 @@ body::before {
   transition: transform 0.4s var(--transition-ease);
 }
 
-.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
 
 /* ==========================================================================
    PRODUCT PAGE — store/[product]/index.html
@@ -1290,8 +1389,15 @@ body::before {
 }
 
 @keyframes preloader-reveal {
-  0% { opacity: 0; transform: scaleY(0.7) scale(0.95); }
-  100% { opacity: 1; transform: scaleY(0.7) scale(1); }
+  0% {
+    opacity: 0;
+    transform: scaleY(0.7) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(0.7) scale(1);
+  }
 }
 
 /* ==========================================================================
@@ -1499,7 +1605,7 @@ html[data-lang="nl"] [lang="en"] {
   color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: color var(--transition-speed) var(--transition-ease),
-              border-color var(--transition-speed) var(--transition-ease);
+    border-color var(--transition-speed) var(--transition-ease);
 }
 
 .epk-copy-btn:hover {
@@ -1611,7 +1717,7 @@ html[data-lang="nl"] [lang="en"] {
   letter-spacing: 0.15em;
   text-decoration: none;
   transition: background var(--transition-speed) var(--transition-ease),
-              color var(--transition-speed) var(--transition-ease);
+    color var(--transition-speed) var(--transition-ease);
 }
 
 .epk-download-btn:hover {
@@ -1655,7 +1761,7 @@ html[data-lang="nl"] [lang="en"] {
   text-decoration: none;
   color: var(--color-text);
   transition: border-color var(--transition-speed) var(--transition-ease),
-              background var(--transition-speed) var(--transition-ease);
+    background var(--transition-speed) var(--transition-ease);
 }
 
 .epk-link-block:hover {
@@ -1739,7 +1845,7 @@ html[data-lang="nl"] [lang="en"] {
     padding: 1.5rem 1.5rem 1rem;
   }
 
-  .live-header > .header-right > .cart-toggle {
+  .live-header>.header-right>.cart-toggle {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -1863,7 +1969,7 @@ html[data-lang="nl"] [lang="en"] {
   color: var(--color-accent);
   text-decoration: none;
   transition: opacity var(--transition-speed) var(--transition-ease),
-              bottom 0.4s var(--transition-ease);
+    bottom 0.4s var(--transition-ease);
 }
 
 .announce-active .join-cta {
@@ -1965,7 +2071,7 @@ html[data-lang="nl"] [lang="en"] {
   background: rgba(203, 7, 7, 0.04);
   text-decoration: none;
   transition: border-color var(--transition-speed) var(--transition-ease),
-              background var(--transition-speed) var(--transition-ease);
+    background var(--transition-speed) var(--transition-ease);
 }
 
 .join-reward-link:hover {
@@ -2487,7 +2593,7 @@ html[data-lang="nl"] [lang="en"] {
   background: rgba(203, 7, 7, 0.04);
   text-decoration: none;
   transition: border-color var(--transition-speed) var(--transition-ease),
-              background var(--transition-speed) var(--transition-ease);
+    background var(--transition-speed) var(--transition-ease);
 }
 
 .page-cta-box:hover {
@@ -2514,7 +2620,10 @@ html[data-lang="nl"] [lang="en"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
